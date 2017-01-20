@@ -1,0 +1,36 @@
+<ion-view view-title="Suggestions">
+
+  <ion-nav-buttons side="right">
+    <button class="button ion-button round button-calm" ng-click="createSuggestion()">
+      Add Suggestion
+    </button>
+    <button class="button ion-button round button-positive" ng-click="doLogout()">
+      Log Out
+    </button>
+  </ion-nav-buttons>
+
+  <ion-content>
+    <ion-list>
+      <ion-item class="item-remove-animate item-avatar" ng-repeat="(id, suggestion) in suggestions" type="item-text-wrap" ng-href="#/tab/suggestions/detail/{{id}}">
+        <h2>{{suggestion.data.title}}</h2>
+        <p>Description:
+          {{suggestion.data.desc}}</p>
+        <p>Date:
+          {{suggestion.data.createDate}}</p>
+
+        <ion-option-button class="button button-balanced" ng-click="upvote(id)">
+          <i class="icon ion-chevron-up"></i>
+          <!--{{suggestion.yays.length()}}</i>-->
+        </ion-option-button>
+        <ion-option-button class="button button-assertive" ng-click="downvote(id)">
+          <i class="icon ion-chevron-down"></i>
+          <!--{{suggestion.nays.length()}}</i>-->
+        </ion-option-button>
+        <ion-option-button class="button-positive" ng-click="showInfo(suggestion.data, id)">
+          Edit
+        </ion-option-button>
+
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>
